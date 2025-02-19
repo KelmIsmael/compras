@@ -1,18 +1,18 @@
 /* Estilo para el body */
 body {
-    background-color: #d8e9ff; /* Fondo suave azul claro */
-    color: #333; /* Color de texto estándar */
+    background-color: #f3f0f0; /* Fondo suave azul claro */
+    color: #f8fbfd; /* Color de texto estándar */
 }
 /* Estilo para el banner superior */
 .top-banner {
-    background-color: #007bff; /* Azul brillante */
+    background-color: #91c3f1; /* Azul brillante */
     color: #fff; /* Texto blanco */
     text-align: center;
     padding: 10px 0;
 }
 /* Estilo del header con el logo y el buscador */
 .header {
-    background-color: #003772; /* Azul oscuro para el header */
+    background-color: #fab804; /* Azul oscuro para el header */
     padding: 10px 20px;
     display: flex;
     justify-content: space-between;
@@ -21,7 +21,7 @@ body {
 
 .header .logo {
     margin-left: 20px;
-    color: #fff;
+    color: #fc1313;
 }
 
 .header .search-bar {
@@ -35,7 +35,7 @@ body {
     max-width: 400px;
     padding: 8px 12px;
     border-radius: 4px;
-    border: 1px solid #ccc;
+    border: 1px solid #f30a0a;
 }
 .header .icons {
     margin-right: 20px;
@@ -43,7 +43,7 @@ body {
 .boton_estado {
     margin-left: 40rem;
     text-decoration: none;
-    color: #ffffff;
+    color: #b9119d;
     font-size: 16px;
 }
 .boton:hover {
@@ -68,7 +68,7 @@ body {
 
 /* Estilo del menú */
 .menu {
-    background-color: #132067; /* Azul intermedio */
+    background-color: #747173; /* Azul intermedio */
     padding: 10px 0;
 }
 
@@ -188,7 +188,7 @@ body {
     padding: 5px 10px;
     font-size: 8px;
     color: white;
-    background-color: #003772;
+    background-color: #047200;
     text-decoration: none;
     border-radius: 3px;
     border: none;
@@ -196,7 +196,7 @@ body {
 }
 
 .boton:hover {
-    background-color: #0056b3;
+    background-color: #b35700;
 }
 /* Estilo para las secciones */
 section {
@@ -248,7 +248,7 @@ p {
 #why-choose-us p {
     font-weight: 600; /* Texto un poco más remarcado */
     font-size: 1.2rem; /* Tamaño del texto */
-    color: #003772; /* Color del texto */
+    color: #000000; /* Color del texto */
 }
 .payment-options {
     margin-top: 40px;
@@ -257,7 +257,7 @@ p {
 
 .section-title {
     font-size: 2rem;
-    color: #003772;
+    color: #0d0d0e;
     text-align: center;
     margin-bottom: 20px;
 }
