@@ -10,33 +10,33 @@
 </head>
 <body>
 
-    <!-- <div id="inicio" class="top-banner">
+    <div id="inicio" class="top-banner">
         Enterate todas las novedades, seguinos en Instagram 
-        <a href="https://www.instagram.com/tu_cuenta_de_instagram" target="_blank" style="color: rgb(236, 10, 10); text-decoration: underline;">Taberna de Mou</a>
-    </div> -->
+        <a href="https://www.instagram.com/tu_cuenta_de_instagram" target="_blank" style="color: #ebeb08; text-decoration: underline;">Taberna de Mou</a>
+
+    </div>
 
     <header class="header">
         <div class="logo">
-            <img src="../compras/media/shop.jpg" alt="Bar de Mou"width="120">
+            <img src="../compras/media/shop.jpg" alt="Bar de Mou"width="100">
         </div>
         <form action="../../accesorios_componentes/buscar.php" method="GET" class="search-bar d-flex align-items-center">
             <input type="text" id="search-input" name="search" class="form-control" placeholder="buscar" aria-label="Buscar">
             <button type="submit" class="btn btn-primary ms-2">Buscar</button>
-            <a href="../compras/cliente/estado.php" class="boton_estado">Consultar Estado Pedido</a>
+            <!-- <a href="../compras/cliente/estado.php" class="boton_estado">Consultar Estado Pedido</a> -->
         </form>
         
-        <div class="icons">
-            <a href="login/login.php" class="icon-link" aria-label="Iniciar Sesión">Iniciar Sesión <i class="fas fa-sign-in-alt"></i></a>
-            <a href="vista_carrito/carrito.html" class="icon-link" aria-label="Ver Carrito"><i class="fas fa-shopping-cart"></i></a>
-        </div>
-    </header>
-    
-    
-    <!-- <div class="container loading-container">
-        <div id="loading-spinner" style="display: none;">Cargando...xxxx</div>
-        <div id="result" aria-live="polite"></div> 
-    </div> -->
+        <a href="login/login.php" class="icon-link" aria-label="Iniciar Sesión" id="miCuenta">
+            Mi Cuenta <i class="fas fa-sign-in-alt"></i>
+        </a>
 
+        <div class="icons">
+            <a href="vista_carrito/carrito.html" class="icon-link" aria-label="Ver Carrito"> Mi Carrito<i class="fas fa-shopping-cart"></i></a>
+        </div>
+
+        
+
+    </header>
     
     <script defer>
         function searchItems(type) {
@@ -185,15 +185,17 @@
     </script>
 
     <nav class="menu text-center">
-        <a href="vista_nav/accesorios.html">Bebidas</a>
+        <a href="vista_nav/accesorios.html">Ofertas</a>
         <a href="vista_nav/reparacion_computadoras.html">Pizzas</a>
         <a href="vista_nav/reparacion_celulares.html">Hamburguesas</a>
         <a href="vista_nav/reparacion_electronica.html">Jugos</a>
-        <a href="vista_nav/accesorios.html">Bebidas</a>
-        <a href="vista_nav/reparacion_computadoras.html">Pizzas</a>
-        <a href="vista_nav/reparacion_celulares.html">Hamburguesas</a>
-        <a href="vista_nav/reparacion_electronica.html">Jugos</a>
-        <a href="https://www.instagram.com/tu_cuenta_de_instagram" target="_blank" style="color: rgb(236, 10, 10); text-decoration: underline;">Taberna de Mou</a>
+        <a href="vista_nav/accesorios.html">Bebidas Alcoholicas</a>
+        <a href="vista_nav/reparacion_computadoras.html">Tragos</a>
+        <a href="vista_nav/reparacion_celulares.html">Sandwiches</a>
+        <a href="vista_nav/reparacion_electronica.html">Menu Infantil</a>
+        <!-- <a href="https://www.instagram.com/tu_cuenta_de_instagram" target="_blank" style="color: rgb(8, 8, 8); text-decoration: underline;">Taberna de Mou</a> -->
+        <!-- <button type="button" class="btn btn-primary ms-2" onclick="window.location.href='../compras/cliente/estado.php'">Consultar Estado Pedido</button> -->
+
 
     </nav>
 

@@ -1,25 +1,26 @@
 <?php
+// create.php
 include '../../base_datos/db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $stock = $_POST['stock'];
-    $tipo = $_POST['tipo'];
-    $stockmin = $_POST['stockmin'];
-    $stockmax = $_POST['stockmax'];
-    // Preparar la consulta de inserción con todos los campos
-    $query = "INSERT INTO accesorios_y_componentes (nombre, descripcion, precio, stock, tipo, stockmin, stockmaximo
-) VALUES (?, ?, ?, ?, ?, ?, ?)";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssdiiii", $nombre, $descripcion, $precio, $stock, $tipo, $stockmin, $stockmax);
+    $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+    $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
+    $precio = floatval($_POST['precio']);
+    $stock = intval($_POST['stock']);
 
-    if ($stmt->execute()) {
+    $imagen = '';
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+        $imagen = 'uploads/' . basename($_FILES['imagen']['name']);
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen);
+    }
+
+    $query = "INSERT INTO accesorios_y_componentes (nombre, descripcion, imagen, precio, stock) VALUES ('$nombre', '$descripcion', '$imagen', $precio, $stock)";
+
+    if (mysqli_query($conn, $query)) {
         header('Location: index.php');
         exit();
     } else {
-        die("Error en la inserción: " . $conn->error);
+        echo "Error al agregar accesorio: " . mysqli_error($conn);
     }
 }
 ?>
@@ -27,39 +28,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include('../../includes/header.php'); ?>
 
 <div class="container mt-5">
-    <a href="index.php" class="btn btn-secondary mb-3">Volver</a>
-
-    <h1 class="mb-4">Agregar Accesorio</h1>
-    <form action="create.php" method="post">
+    <h1>Agregar Accesorio</h1>
+    <form action="create.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" required>
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion" required>
+            <label class="form-label">Descripción</label>
+            <textarea name="descripcion" class="form-control" required></textarea>
         </div>
         <div class="mb-3">
-            <label for="precio" class="form-label">Precio</label>
-            <input type="number" step="0.01" class="form-control" id="precio" name="precio" required>
+            <label class="form-label">Imagen</label>
+            <input type="file" name="imagen" class="form-control">
         </div>
         <div class="mb-3">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock" required>
+            <label class="form-label">Precio</label>
+            <input type="number" name="precio" step="0.01" class="form-control" required>
         </div>
         <div class="mb-3">
-            <label for="tipo" class="form-label">Tipo</label>
-            <input type="text" class="form-control" id="tipo" name="tipo" required>
+            <label class="form-label">Stock</label>
+            <input type="number" name="stock" class="form-control" required>
         </div>
-        <div class="mb-3">
-            <label for="stockmin" class="form-label">Stock Mínimo</label>
-            <input type="number" class="form-control" id="stockmin" name="stockmin" required>
-        </div>
-        <div class="mb-3">
-            <label for="stockmax" class="form-label">Stock Maximo</label>
-            <input type="number" class="form-control" id="stockmax" name="stockmax" required>
-        </div>
-        <button type="submit" class="btn btn-primary">Agregar</button>
+        <button type="submit" class="btn btn-primary">Guardar</button>
+        <a href="index.php" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 

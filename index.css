@@ -5,82 +5,93 @@ body {
 }
 /* Estilo para el banner superior */
 .top-banner {
-    background-color: #91c3f1; /* Azul brillante */
+    background-color: #070707; /* Azul brillante */
     color: #fff; /* Texto blanco */
     text-align: center;
-    padding: 10px 0;
+    padding: 2.5px 0;
 }
 /* Estilo del header con el logo y el buscador */
 .header {
     background-color: #fab804; /* Azul oscuro para el header */
     padding: 10px 20px;
-    display: flex;
+    display: flex;  
     justify-content: space-between;
     align-items: center;
 }
 
 .header .logo {
-    margin-left: 20px;
-    color: #fc1313;
+    margin-left: 0px;
+    color: #2a13fc;
 }
 
 .header .search-bar {
     flex-grow: 1;
-    margin-left: 20px;
+    margin-left: 40px;
     display: flex;
     align-items: center;
 }
 #search-input {
-    width: 60%;
-    max-width: 400px;
-    padding: 8px 12px;
+    width: 85%;
+    max-width: 800px;
+    padding: 10px 20px;
     border-radius: 4px;
-    border: 1px solid #f30a0a;
+    border: 1px solid hsl(0, 0%, 3%);
 }
 .header .icons {
-    margin-right: 20px;
+    margin-right: 4px;
 }
 .boton_estado {
-    margin-left: 40rem;
+    margin-left: 4rem;
     text-decoration: none;
     color: #b9119d;
     font-size: 16px;
 }
 .boton:hover {
-    background-color: #0056b3;
+    background-color: #b30000;
 }
 
 .icons {
     display: flex;
-    gap: 15px;
+    
+    display: block; /* Hace que cada enlace ocupe toda la línea */
+    margin-bottom: 2px; /* Espacio entre los enlaces (opcional) */
 }
 
 .icon-link {
     text-decoration: none;
-    color: #ffffff;
-    font-size: 16px;
+    color: #080808;
+    font-size: 14px;
+    display: block; /* Hace que cada enlace ocupe toda la línea */
+    margin-bottom: 1px; /* Espacio entre los enlaces */
+    display: flex;  /* Usamos flexbox para controlar mejor la alineación */
+    align-items: center; /* Alineamos el texto e ícono verticalmente */
 }
 
 .icon-link i {
-    margin-left: 5px;
+    margin-right: 14px;
+    margin-left: 6px; /* Separar el ícono del texto (puedes ajustar este valor) */
     font-size: 18px;
 }
+
 
 /* Estilo del menú */
 .menu {
     background-color: #747173; /* Azul intermedio */
     padding: 10px 0;
+    text-align: center; /* Centra los enlaces */
 }
 
 .menu a {
-    color: #e0e8f7; /* Azul claro para los enlaces */
-    margin: 0 15px;
+    color: #0a0a0a; /* Azul claro para los enlaces */
+    margin: 0 25px; /* Aumentamos el espacio entre los enlaces */
+    font-size: 16px;
 }
 
 .menu a:hover {
     text-decoration: underline;
     color: #fff;
 }
+
 
 /* Estilo del navbar */
 .navbar {

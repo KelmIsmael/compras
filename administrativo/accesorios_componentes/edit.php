@@ -1,63 +1,69 @@
 <?php
+// edit.php
 include '../../base_datos/db.php';
 
-$id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $result = mysqli_query($conn, "SELECT * FROM accesorios_y_componentes WHERE id_accesorios_y_componentes = $id");
+    $row = mysqli_fetch_assoc($result);
+}
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $nombre = $_POST['nombre'];
-    $descripcion = $_POST['descripcion'];
-    $precio = $_POST['precio'];
-    $stock = $_POST['stock'];
+    $id = intval($_POST['id']);
+    $nombre = mysqli_real_escape_string($conn, $_POST['nombre']);
+    $descripcion = mysqli_real_escape_string($conn, $_POST['descripcion']);
+    $precio = floatval($_POST['precio']);
+    $stock = intval($_POST['stock']);
 
-    $query = "UPDATE accesorios_y_componentes SET nombre = ?, descripcion = ?, precio = ?, stock = ? WHERE id_accesorios_y_componentes = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("ssdii", $nombre, $descripcion, $precio, $stock, $id);
+    $imagen = $row['imagen'];
+    if (isset($_FILES['imagen']) && $_FILES['imagen']['error'] == 0) {
+        $imagen = 'uploads/' . basename($_FILES['imagen']['name']);
+        move_uploaded_file($_FILES['imagen']['tmp_name'], $imagen);
+    }
 
-    if ($stmt->execute()) {
+    $query = "UPDATE accesorios_y_componentes SET nombre='$nombre', descripcion='$descripcion', imagen='$imagen', precio=$precio, stock=$stock WHERE id_accesorios_y_componentes = $id";
+
+    if (mysqli_query($conn, $query)) {
         header('Location: index.php');
         exit();
     } else {
-        die("Error en la actualización: " . $conn->error);
+        echo "Error al actualizar accesorio: " . mysqli_error($conn);
     }
-} else {
-    $query = "SELECT * FROM accesorios_y_componentes WHERE id_accesorios_y_componentes = ?";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("i", $id);
-    $stmt->execute();
-    $result = $stmt->get_result();
-    $row = $result->fetch_assoc();
 }
 ?>
 
 <?php include('../../includes/header.php'); ?>
 
 <div class="container mt-5">
-    <a href="index.php" class="btn btn-secondary mb-3">Volver</a>
-
-    <h1 class="mb-4">Editar Accesorio</h1>
-    <form action="edit.php?id=<?php echo htmlspecialchars($id); ?>" method="post">
+    <h1>Editar Accesorio</h1>
+    <form action="edit.php" method="POST" enctype="multipart/form-data">
+        <input type="hidden" name="id" value="<?php echo $row['id_accesorios_y_componentes']; ?>">
         <div class="mb-3">
-            <label for="nombre" class="form-label">Nombre</label>
-            <input type="text" class="form-control" id="nombre" name="nombre" value="<?php echo htmlspecialchars($row['nombre']); ?>" required>
+            <label class="form-label">Nombre</label>
+            <input type="text" name="nombre" class="form-control" value="<?php echo htmlspecialchars($row['nombre']); ?>" required>
         </div>
         <div class="mb-3">
-            <label for="descripcion" class="form-label">Descripción</label>
-            <input type="text" class="form-control" id="descripcion" name="descripcion" value="<?php echo htmlspecialchars($row['descripcion']); ?>" required>
+            <label class="form-label">Descripción</label>
+            <textarea name="descripcion" class="form-control" required><?php echo htmlspecialchars($row['descripcion']); ?></textarea>
         </div>
         <div class="mb-3">
-            <label for="precio" class="form-label">Precio</label>
-            <input type="number" step="0.01" class="form-control" id="precio" name="precio" value="<?php echo htmlspecialchars($row['precio']); ?>" required>
+            <label class="form-label">Imagen</label>
+            <input type="file" name="imagen" class="form-control">
+            <?php if (!empty($row['imagen'])) { ?>
+                <img src="<?php echo htmlspecialchars($row['imagen']); ?>" alt="Imagen" width="80" height="80">
+            <?php } ?>
         </div>
         <div class="mb-3">
-            <label for="stock" class="form-label">Stock</label>
-            <input type="number" class="form-control" id="stock" name="stock" value="<?php echo htmlspecialchars($row['stock']); ?>" required>
+            <label class="form-label">Precio</label>
+            <input type="number" name="precio" step="0.01" class="form-control" value="<?php echo htmlspecialchars($row['precio']); ?>" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Stock</label>
+            <input type="number" name="stock" class="form-control" value="<?php echo htmlspecialchars($row['stock']); ?>" required>
         </div>
         <button type="submit" class="btn btn-primary">Actualizar</button>
+        <a href="index.php" class="btn btn-secondary">Cancelar</a>
     </form>
 </div>
 
 <?php include('../../includes/footer.php'); ?>
-
-<?php
-mysqli_close($conn);
-?>

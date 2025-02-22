@@ -19,12 +19,14 @@ if (!$result) {
 
     <h1 class="mb-4">Accesorios y Componentes</h1>
     <a href="create.php" class="btn btn-primary mb-3">Agregar Accesorio</a>
+
     <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Nombre</th>
                 <th>Descripción</th>
+                <th>Imagen</th>
                 <th>Precio</th>
                 <th>Stock</th>
                 <th>Acciones</th>
@@ -32,17 +34,27 @@ if (!$result) {
         </thead>
         <tbody>
             <?php while ($row = mysqli_fetch_assoc($result)) { ?>
-            <tr>
-                <td><?php echo htmlspecialchars($row['id_accesorios_y_componentes']); ?></td>
-                <td><?php echo htmlspecialchars($row['nombre']); ?></td>
-                <td><?php echo htmlspecialchars($row['descripcion']); ?></td>
-                <td><?php echo htmlspecialchars(number_format($row['precio'], 2)); ?></td>
-                <td><?php echo htmlspecialchars($row['stock']); ?></td>
-                <td>
-                    <a href="edit.php?id=<?php echo htmlspecialchars($row['id_accesorios_y_componentes']); ?>" class="btn btn-warning btn-sm">Editar</a>
-                    <a href="delete.php?id=<?php echo htmlspecialchars($row['id_accesorios_y_componentes']); ?>" class="btn btn-danger btn-sm">Eliminar</a>
-                </td>
-            </tr>
+                <tr>
+                    <td><?php echo htmlspecialchars($row['id_accesorios_y_componentes']); ?></td>
+                    <td><?php echo htmlspecialchars($row['nombre']); ?></td>
+                    <td><?php echo htmlspecialchars($row['descripcion']); ?></td>
+
+                    <!-- Mostrar Imagen -->
+                    <td>
+                        <?php if (!empty($row['imagen'])) { ?>
+                            <img src="<?php echo htmlspecialchars($row['imagen']); ?>" alt="Imagen" width="80" height="80">
+                        <?php } else { ?>
+                            <span>Sin imagen</span>
+                        <?php } ?>
+                    </td>
+
+                    <td>$<?php echo htmlspecialchars(number_format($row['precio'], 2)); ?></td>
+                    <td><?php echo htmlspecialchars($row['stock']); ?></td>
+                    <td>
+                        <a href="edit.php?id=<?php echo htmlspecialchars($row['id_accesorios_y_componentes']); ?>" class="btn btn-warning btn-sm">Editar</a>
+                        <a href="delete.php?id=<?php echo htmlspecialchars($row['id_accesorios_y_componentes']); ?>" class="btn btn-danger btn-sm" onclick="return confirm('¿Seguro que deseas eliminar este accesorio?');">Eliminar</a>
+                    </td>
+                </tr>
             <?php } ?>
         </tbody>
     </table>

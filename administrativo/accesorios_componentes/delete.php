@@ -1,19 +1,16 @@
 <?php
+// delete.php
 include '../../base_datos/db.php';
 
-$id = $_GET['id'];
+if (isset($_GET['id'])) {
+    $id = intval($_GET['id']);
+    $query = "DELETE FROM accesorios_y_componentes WHERE id_accesorios_y_componentes = $id";
 
-$query = "DELETE FROM accesorios_y_componentes WHERE id_accesorios_y_componentes = ?";
-$stmt = $conn->prepare($query);
-$stmt->bind_param("i", $id);
-
-if ($stmt->execute()) {
-    header('Location: index.php');
-    exit();
-} else {
-    die("Error en la eliminación: " . $conn->error);
+    if (mysqli_query($conn, $query)) {
+        header('Location: index.php');
+        exit();
+    } else {
+        echo "Error al eliminar accesorio: " . mysqli_error($conn);
+    }
 }
-
-$stmt->close();
-$conn->close();
 ?>
