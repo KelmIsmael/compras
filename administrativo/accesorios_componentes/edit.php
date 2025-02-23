@@ -36,6 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <div class="container mt-5">
     <h1>Editar Accesorio</h1>
+    <a href="../../administrativo/accesorios_componentes/index.php" class="btn btn-secondary mb-3">Volver</a>
     <form action="edit.php" method="POST" enctype="multipart/form-data">
         <input type="hidden" name="id" value="<?php echo $row['id_accesorios_y_componentes']; ?>">
         <div class="mb-3">

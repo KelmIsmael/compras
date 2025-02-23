@@ -1,0 +1,127 @@
+/* Contenedor para organizar las tarjetas en grid */
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Se adapta al ancho */
+    gap: 20px; /* Espacio entre tarjetas */
+    padding: 20px;
+}
+
+/* Contenedor de la imagen con efecto de zoom */
+.img-container {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.img-container:hover img {
+    transform: scale(1.1);
+}
+
+/* Tarjeta del producto con bordes redondeados y sombra */
+.product-card {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Contenido dentro de la tarjeta */
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.card-text {
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.card-text.font-weight-bold {
+    color: #27ae60;
+    font-size: 1.1rem;
+}
+
+/* Indicador de stock */
+.card-text.text-warning {
+    color: #f39c12;
+}
+
+/* Controles de cantidad */
+.quantity-controls {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.quantity-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    background-color: #f8f9fa;
+    transition: background-color 0.2s;
+}
+
+.quantity-btn:hover {
+    background-color: #e9ecef;
+}
+
+.quantity-display {
+    width: 40px;
+    text-align: center;
+    font-weight: bold;
+}
+
+/* Botón Añadir al carrito */
+.add-to-cart-btn {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    transition: background-color 0.3s ease;
+    margin-top: 10px;
+    padding: 10px;
+    font-size: 1rem;
+    border-radius: 6px;
+    text-align: center;
+}
+
+.add-to-cart-btn:hover {
+    background-color: #2980b9;
+}
+
+/* Responsividad para móviles */
+@media (max-width: 768px) {
+    .img-container {
+        height: 180px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    }
+
+    .add-to-cart-btn {
+        width: 100%; /* Hacer el botón más ancho en pantallas pequeñas */
+    }
+}

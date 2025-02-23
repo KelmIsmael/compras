@@ -21,7 +21,7 @@ body {
 
 .header .logo {
     margin-left: 0px;
-    color: #2a13fc;
+    color: #050505;
 }
 
 .header .search-bar {
@@ -31,7 +31,7 @@ body {
     align-items: center;
 }
 #search-input {
-    width: 85%;
+    width: 80%;
     max-width: 800px;
     padding: 10px 20px;
     border-radius: 4px;
@@ -89,13 +89,13 @@ body {
 
 .menu a:hover {
     text-decoration: underline;
-    color: #fff;
+    color: #050505;
 }
 
 
 /* Estilo del navbar */
 .navbar {
-    background-color: #003772; /* Azul fuerte */
+    background-color: #720000; /* Azul fuerte */
     font-weight: bold;
 }
 

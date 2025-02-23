@@ -28,6 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php include('../../includes/header.php'); ?>
 
 <div class="container mt-5">
+    <a href="../../administrativo/accesorios_componentes/index.php" class="btn btn-secondary mb-3">Volver</a>
     <h1>Agregar Accesorio</h1>
     <form action="create.php" method="POST" enctype="multipart/form-data">
         <div class="mb-3">
