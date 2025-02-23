@@ -31,8 +31,8 @@ include('../base_datos/db.php'); // Conexión a la base de datos
         </form>
 
         <div class="d-flex align-items-center">
-            <a href="../login/login.php" class="icon-link me-3" aria-label="Iniciar Sesión" id="miCuenta" title="Iniciar Sesión">
-                Mi Cuenta <i class="fas fa-sign-in-alt"></i>
+            <a href="../index.html" class="icon-link me-3" aria-label="Iniciar Sesión" id="miCuenta" title="Iniciar Sesión">
+                Inicio <i class="fas fa-sign-in-alt"></i>
             </a>
 
             <a href="../vista_carrito/agregar_al_carrito.php" class="icon-link position-relative" aria-label="Ver Carrito" title="Mi Carrito">
